@@ -10,7 +10,7 @@
 4. [Installation](#installation)
 5. [Usage](#usage)
 6. [Screenshots](#screenshots)
-7. [Manual Testing](#manual-testing)
+7. [Testing](#testing)
 8. [Contributing](#contributing)
 9. [License](#license)
 10. [Contact](#contact)
@@ -138,24 +138,73 @@ Passport.js (for authentication)
 2. **User Dashboard**
     -Patients can sign up and log in securely using Passport.js, and can book their appointments in required hospital in any available locations, also can navigate to hospitals by maps
 
+## Screenshots
+
+### Home pages 
+![home1](https://github.com/user-attachments/assets/2e4d5b42-1105-459b-ad32-b87b277c8b21)
+![home2](https://github.com/user-attachments/assets/3c394e6c-6ab5-43fb-9d47-eeef70d45b5a)
+![home3](https://github.com/user-attachments/assets/a9bb801c-4c95-41a1-897b-5773221db563)
+
+### Login/ Signup page
+![signup](https://github.com/user-attachments/assets/a8aa4c28-5678-4a44-b0b0-09c31dad4bf0)
+![login](https://github.com/user-attachments/assets/a758ed7b-d1d3-4e8f-a635-84642d531a44)
+
+### Hospital detail page
+![deatils doctors ](https://github.com/user-attachments/assets/86e0f64b-9e2a-4790-bd70-3d696d393ad5)
+![details 1](https://github.com/user-attachments/assets/e0e1b75b-974f-4bde-977d-b8f1c685f9b5)
+
+### Book Appointment page
+![book page](https://github.com/user-attachments/assets/ca88ebc7-c72e-4b22-982b-065791e67ccf)
+
+### Appointments page
+![appointments user](https://github.com/user-attachments/assets/98a93ebb-1251-4967-b1c7-ebd5249ea47c)
+
+### Reviews Page
+![reviews](https://github.com/user-attachments/assets/0be92f9a-2894-43d3-8e75-982523e7af55)
+
+### Map Section
+![map](https://github.com/user-attachments/assets/d7d17fdb-dd36-4a0e-bde3-9647a7aa748d)
+
+### Footer section
+![footer](https://github.com/user-attachments/assets/07de2697-38ad-44b1-85b9-63bc2cc950d5)
+
+### Admin Appointment request page 
+![appointments requests](https://github.com/user-attachments/assets/59b67005-50bf-4a8b-a633-2856a64444c1)
+
+### Admin panel to add new Hospital
+![new admin](https://github.com/user-attachments/assets/32a950c3-cc59-48e1-8c5e-2377a7b1fe72)
+
+## Demo video
 
 
 
+## Testing
+1. **Unit Testing:** Tests individual components like patient records and appointment scheduling.
+2. **Integration Testing:** we Ensure different modules work seamlessly together.
+3. **System Testing:** Checked End-to-end system testing in real-world scenarios.
+4. **Performance Testing:** Done Assess system performance under load.
 
-Testing
-Unit Testing: Tests individual components like patient records and appointment scheduling.
-Integration Testing: Ensures different modules work seamlessly together.
-System Testing: End-to-end system testing in real-world scenarios.
-Performance Testing: Assess system performance under load.
-Security Testing: Identifies vulnerabilities like SQL injections or XSS.
-User Acceptance Testing (UAT): Final validation from stakeholders.
-Images and Videos
-Screenshots
-Demo Video
-Project Demo
-Future Enhancements
-Chatbot Integration: To assist patients and staff with routine inquiries and scheduling.
-Doctor Online Call Service: Remote consultations with healthcare providers.
-Medicine Delivery: Patients can order prescribed medications through the platform.
-License
-This project is licensed under the MIT License.
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
+
+## Future Enhancements
+**Chatbot Integration:** To assist patients and staff with routine inquiries and scheduling.
+**Doctor Online Call Service:** Remote consultations with healthcare providers.
+**Medicine Delivery:** Patients can order prescribed medications through the platform.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+- **Author:** [Jeeru Nithin Reddy](https://github.com/JEERUNITHINREDDY)
+- **Email:** jeerunithinreddy3012@gmail.com
+- **LinkedIn:** Jeeru Nithin Reddy([https://www.linkedin.com/in/yourprofile](https://www.linkedin.com/in/jeeru-nithin-reddy-80586622b/)
+
