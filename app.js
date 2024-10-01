@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
@@ -24,8 +25,9 @@ const userRouter  = require("./routes/user.js");
 const { Session } = require("inspector");
 
 
-// const MONGODB_URL = "mongodb://127.0.0.1:27017/wanderlust";
-const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = "mongodb://127.0.0.1:27017/hospital";
+// const dbUrl = process.env.ATLASDB_URL;  /// enable this to us in online server
+
 
 main()
     .then(() => {
@@ -78,6 +80,23 @@ app.get("/listings/filter", (req, res) => {
     res.render("listings/filter.ejs");
 });
 
+//apointment renger page
+app.get("/listings/bookappointment", (req, res) => { //new
+    res.render("listings/book.ejs");
+});
+
+app.get("/listings/bookcnf", (req, res) => { //new
+    res.render("listings/bookconf.ejs");
+});
+
+app.get("/privacy", (req, res) => { //new
+    res.render("listings/privacy.ejs");
+});
+app.get("/terms", (req, res) => { //new
+    res.render("listings/terms.ejs");
+});
+
+
 
 // app.get("/listings/default", (req, res) => {  //////chageeeeeeeeeeee
 //     res.render("hii iam the root");
@@ -118,25 +137,22 @@ app.use((req, res, next ) => {
 // });
 
 
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
+app.get("/listings/:id/edit", (req, res)=>{
+    res.redirect("/listings/:id/edit");
+});
 
-// app.get("/testlisting", async (req, res) => {
-//     let samplelisting = new Listing({
-//         title: "my new place",
-//         description: "by my lov",
-//         price: 20000,
-//         location: "vadodara, gujarat",
-//         country: "india",
-//     });
+//apointments page
 
-//     await samplelisting.save();
-//     console.log("Saved sample list");
-//     res.send("successful");
 
-// });
+
+
+
+
 
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "page not found!"));

@@ -1,3 +1,5 @@
+
+
 body {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     display: flex;
@@ -24,57 +26,67 @@ body {
 }
 
 /*footer*/
-.f-info-links a{
-    text-decoration: none;
-    color: #222222;
-}
 
-
-.f-info-links a:hover{
-    text-decoration: underline;
-    
-}
-
-
-.f-info-links, 
-
-.f-info-brand {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.f-info-socials {
-    width: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    
-    
-}
-
-.f-info-socials a {
-    margin-right: 1rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: #222222;
-
-}
-
-.f-info{
+.footer{
+    color: #d9d9d9;
+    background-color: #373434;
+    margin-top: auto;
     text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
+    padding: 10px;
+    padding-left: 0 ;
+    position: relative;
+}
+
+.box-container {
     
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap:2rem;
+    margin: 0;
+
+}
+
+.footer .box-container .box h3{
+    font-size: 2rem;
+    color:var(--black);
+    padding: 1rem 0;
+    
+}
+
+.footer .box-container .box a{
+    display: block;
+    font-size: 1rem;
+    color:var(--light-color);
+    padding: 1rem 0;
+    text-decoration: none;
+    text-align: start;
+    margin-left: 10rem;
+
+}
+
+.footer .box-container .box a i{
+    padding-right: .5rem;
+    color:var(--green);
+    
+}
+
+.footer .box-container .box a:hover i{
+    padding-right:2rem;
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+/* footer ends */
 
 .listing-card{
     border: none !important;
@@ -124,7 +136,7 @@ body {
 }
 
 /* show page  */
-.show-img{
+/* .show-img{
     height: 50vh;
   
 }
@@ -132,12 +144,13 @@ body {
 .btns
 {
     display: flex;
+    
 }
 
 .show-card{
     padding-left: 0;
     padding-right: 0;
-}
+} */
 
 /* mapp */
 
@@ -190,7 +203,7 @@ body {
 
 
 /* footer for the filters section */
-.fil-fot {
+/* .fil-fot {
     text-align: center;
     height: 8rem;
     background-color: #ebebeb;
@@ -205,5 +218,9 @@ body {
 
 .lod{
     font-size:4rem;
-}
+} */
 
+/* image for booking cnf page */
+.cnf-img{
+width:18rem;
+}

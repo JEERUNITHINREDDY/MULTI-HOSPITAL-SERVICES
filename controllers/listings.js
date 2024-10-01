@@ -17,6 +17,13 @@ module.exports.renderNewForm = (req, res) =>{
     res.render("listings/new.ejs", );
 };
 
+//apoints form
+// module.exports.renderappointmentform = (req, res) =>{ 
+    
+//     res.render("listings/book.ejs", );
+// };
+
+
 module.exports.showListings = async (req, res) =>{
     let {id} = req.params;
     const listing = await Listing.findById(id)
@@ -58,7 +65,6 @@ module.exports.createListing = async (req, res, next ) => {
     res.redirect("/listings");
 };
 
-
 module.exports.renderEditForm = async (req, res) =>{
     let {id} = req.params;
     const listing = await Listing.findById(id);
@@ -97,3 +103,22 @@ module.exports.destroyListing = async (req, res) =>{
     req.flash("success", "Listing Deleted!");
     res.redirect("/listings");
 };
+
+
+// module.exports.sortListing = async (req, res) => {
+//     let { category } = req.params;
+//     const allListing = await Listing.find({ field: `${category}` });
+//     res.render("listings/index.ejs", { allListings: allListing });
+//   };
+  
+  module.exports.searchByName = async (req, res) => {
+    let { name } = req.params;
+    const listing = await Listing.find({ title:{ $regex: name, $options: 'i' } });
+    res.render("listings/index.ejs", { allListings: listing });
+  };
+
+  module.exports.searchByfilter = async(req, res)=>{
+    let {filter} = req.params;
+    const listings = await Listing.find({ filter: filter  })
+    res.render("listings/index.ejs", { allListings: listings });
+  };

@@ -3,18 +3,18 @@
 <div class="row">
     <div class="col-8 offset-2" >
         <br><br>
-    <h3>Crete a New Listing</h3>
+    <h3>Add New Hospital</h3>
     <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
         
         <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
+            <label for="title" class="form-label"> Hospital Name</label>
             <input name = "listing[title]" 
             placeholder="enter title" 
             type = "text" 
             class="form-control"
             required>
             
-            <div class="valid-feedback">Title looks Good!</div>
+            <!-- <div class="valid-feedback">Title looks Good!</div> -->
         </div>       
         
 
@@ -29,12 +29,24 @@
 
             <div class="invalid-feedback">Please enter short description</div>
 
+        </div>
+        <div class="mb-3">
+            <label for="organs" class="form-label">Organ Avaliability</label>
+            <textarea cols="30" rows="5" 
+            name = "listing[organs]" 
+            placeholder="organ Avaliability" 
+            class="form-control"
+            
+            ></textarea>
+
+            <div class="invalid-feedback">Please enter details of available organs</div>
+
         </div>        
            
         
         <div class="mb-3">
             <label for="image" 
-            class="form-label">Upload listing Image</label>
+            class="form-label">Upload Hospital Image</label>
 
             <input name = "listing[image]"
              
@@ -47,7 +59,7 @@
        
         <div class="row">
             <div class="mb-3 col-md-4">
-                <label for="price" class="form-label">Price</label>
+                <label for="price" class="form-label">Apointment Price</label>
                 <input name = "listing[price]" placeholder="enter price" type="number"  class="form-control" required>
 
                 <div class="invalid-feedback">Price should be valid</div>
@@ -62,6 +74,17 @@
             </div>
         </div>
         
+        <div class="mb-3">
+            <label for="filter" class="form-label">Filter</label>
+            <select class="form-control" id="room-selection" name="listing[filter]" required>
+                <option value="">Select city</option>
+                <option name="city" value="vadodara">Vadodara</option>
+                <option name="city" value="surat">Surat</option>
+                <option name="city" value="ahmedabad">Ahmedabad</option>
+              </select>
+
+            <div class="invalid-feedback">city should be valid</div>
+        </div>
        
 
         <div class="mb-3">

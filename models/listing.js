@@ -8,6 +8,7 @@ const listingSchema = new Schema ({
         required: true, 
     },
     description: String,
+    organs: String,
    
     image: { 
         url: String,
@@ -15,6 +16,7 @@ const listingSchema = new Schema ({
     },
     price: Number,
     location: String,
+    filter:String,
     country: String, 
     reviews : [
         {

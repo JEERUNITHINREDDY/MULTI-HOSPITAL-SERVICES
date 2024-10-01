@@ -5,35 +5,174 @@
 
 
 </script>
-<div class="row mt-3">
-    <div class="col-8 offset-3 mb-3" >
+
+<style>
+    .show-img{
+        width: 180vh !important;
+        height:80vh;
+      
+    }
+    
+    .btns
+    {
+        display: flex;
+        
+    }
+    
+    .show-card{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .card-body{
+        display: flex;
+        flex-direction: row;
+
+    }
+    .left{
+        width: 100%;
+        max-width: max(75%,50px);
+    }
+    .right{
+        width: 100%;
+        max-width:  max(25%,5px);
+        padding: 10px;
+        margin: 30px;
+    }
+
+    .heading{
+        text-align: start;
+        padding-bottom: 1rem;
+        text-shadow: var(--text-shadow);
+        text-transform: uppercase;
+        color:var(--black);
+        font-size: 3rem;
+        letter-spacing: .3rem;
+        font-weight: 200;
+        
+    }
+
+
+    .heading span{
+        text-transform: uppercase;
+        color:var(--green);
+    }
+    
+
    
-        <h3><%= listing.title %></h3>
+    
+    .doctors{
+        font-size: 62.5%;
+        overflow-x: hidden;
+        scroll-padding-top: 7rem;
+        scroll-behavior: smooth;
+
+
+        font-family: 'Poppins', sans-serif;
+        margin:0; padding: 0;
+        box-sizing: border-box;
+        outline: none; border: none;
+        text-transform: capitalize;
+        transition: all .2s ease-out;
+        text-decoration: none;
+
+
+        --green:#16a085;
+        --black:#444;
+        --light-color:#111;
+        --box-shadow:.5rem .5rem 0 rgba(22, 160, 133, .2);
+        --text-shadow:.4rem .4rem 0 rgba(0, 0, 0, .2);
+        --border:.2rem solid var(--green);
+
+        margin-bottom: 4rem;
+    }
+
+    
+    section{
+        padding:2rem 9%;
+    }
+    
+
+    .doctors .box-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        gap:2rem;
+    }
+    
+    .doctors .box-container .box{
+        text-align: center;
+        background:#fff;
+        border-radius: .5rem;
+        border:var(--border);
+        box-shadow: var(--box-shadow);
+        padding:2rem;
+    }
+    
+   
+    
+    .doctors .box-container .box h3{
+        color:var(--black);
+        font-size: 1.5rem;
+    }
+    
+    .doctors .box-container .box span{
+        color:var(--green);
+        font-size: 1rem;
+    }
+    
+
+    .rev{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .revv{
+        margin-top: 10px;
+        width: 20rem;
+    }
+    
+   
+
+
+</style>
+<div class="row mt-3">
+    <div class=" mb-3" >
+   
+        <h1><%= listing.title %></h1>
     </div>
-    <div class="card col-6 offset-3 show-card listing-card">
+    <div class="card  show-card listing-card">
         <img src="<%= listing.image.url %> " class="card-img-top show-img" alt="listing_image">
     <div class="card-body">  
-        <p class="card-text">
-            <i> Owned by -<%= listing.owner.username %></i> </p>
+        <div class="left">
+            <p class="card-text">
+                <i> <%= listing.title %></i> </p>
+    
+                <p class="card-text m-1 p-1"><%= listing.description %> </p>
+    
+               <h4 class="card-text"> Appointment fee:-
+                 &#8377; <b> <%= listing.price.toLocaleString("en-IN") %> </b></h4> 
+                <h4 class="card-text"><b> location: </b> <%= listing.location %> </h4>
+                <h5 class="card-text"> <b> <%= listing.country %></b> </h5>
+        </div>
+        <div class="right">
+            <h2>Avaliable Organ Details-</h2>
+            <h3 class="card-text"><b><%= listing.organs %></b> </h3>
 
-            <p class="card-text"><b><%= listing.description %></b> </p>
-
-           <p class="card-text">
-             &#8377; <%= listing.price.toLocaleString("en-IN") %> </p>
-
-            <p class="card-text"> <%= listing.location %> </p>
-            <p class="card-text"> <%= listing.country %> </p>
-
+        </div>
+        
   </div>
     </div> 
 
 <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
 
-<div class="btns">
-    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit </a>
+<div class="btns  ">
 
+    <form action="/listings/<%= listing._id %>/edit" method="get">
+        <button class="btn btn-dark  edit-btn" >Edit</button>
+    </form>
+    
+    
     <form method="POST" action="/listings/<%= listing._id%>?_method=DELETE" >
-        <button class="btn btn-dark offset-5">Delete </button>
+        <button class="btn btn-dark offset-5 ">Delete </button>
     </form>
     
 </div>
@@ -41,19 +180,139 @@
 
 
 
-<div class="col-8 offset-3">
+<div class="">
+
+   
    
     <% if(currUser) { %>
-        <hr>
+        <br>
+        <a  href="/listings/bookappointment" class="btn btn-success col-3  ">Book Appointment</a> 
+        
+    <% } %>
+    <hr>
+    
+    <section class="doctors" id="doctors">
+
+        <h1 class="heading"> our <span>doctors</span> </h1>
+    
+        <div class="box-container">
+    
+            <div class="box">
+                <h3>Dr. Kundan Jogi</h3>
+                <span>General Physician|
+    MBBS|
+    1 Years of Experience</span>
+                <div class="share">
+                
+                    
+                </div>
+            </div>
+    
+            <div class="box">
+                <h3>Dr. Rakshit Ahuja</h3>
+                <span>General Surgery|
+    MS|
+    1 Years of Experience</span>
+                <div class="share">
+                
+                </div>
+            </div>
+    
+            <div class="box">
+                <h3>Dr. Vivek Pratap Singh</h3>
+                <span>Psychiatry|
+    MBBS, M.D. (Psychiatry), MD, PG Dip
+    |10 Years of Experience</span>
+                <div class="share">
+               
+                </div>
+            </div>
+    
+            <div class="box">
+                <h3>Dr. Alloukik Agrawal </h3>
+                <span>Psychiatry |
+    MBBS |
+     |5 Years of Experience</span>
+                <div class="share">
+                
+                </div>
+            </div>
+    
+            <div class="box">
+                <h3>Dr. Naman pardal
+    </h3>
+                <span>MBBS |
+    
+    General Physician |
+    6 Years Experience Overall</span>
+                <div class="share">
+                
+                </div>
+            </div>
+    
+            <div class="box">
+                <h3>Dr. Ritu Jain</h3>
+                <span>MBBS, MS - Obstetrics & Gynaecology
+    
+    Laparoscopic Surgeon (Obs & Gyn),Gynecologist,Obstetrician,Infertility Specialist |
+    20 Years Experience Overall  (13 years as specialist)</span>
+                <div class="share">
+               
+                
+                </div>
+            </div>
+            <div class="box">
+                <h3>Dr. Abhishek Sachdev</h3>
+                <span>MBBS, MS - Orthopaedics
+    
+    Orthopedic surgeon,Joint Replacement Surgeon,Spine And Pain Specialist
+    13 Years Experience Overall</span>
+                <div class="share">
+                    
+                   
+                </div>
+            </div>
+            <div class="box">
+                <h3>Dr. Kritika Jaiswal</h3>
+                <span>BDS, MDS - Paedodontics And Preventive Dentistry, Fellowship in Medical Cosmetology (FMC)
+    
+    Pediatric Dentist,Cosmetic/Aesthetic Dentist,Cosmetologist|
+    11 Years Experience Overall</span>
+                <div class="share">
+                
+                </div>
+            </div>
+            <div class="box">
+                <h3>Dr. Rashmi Dilip Kumar</h3>
+                <span>MBBS, DNB - Obstetrics & Gynecology
+    
+    Gynecologist,Obstetrician|
+    17 Years Experience. </span>
+                <div class="share">
+                
+                </div>
+            </div>
+    
+        </div>
+    
+    </section>
+    
+
+
+
+
+<hr>
+
+
+    <% if(currUser) { %>
+
     <h4>Leave a Review</h4>
     <form action="/listings/<%= listing.id %>/reviews" method="POST" novalidate class="needs-validation">
        
 
         <div class="mb-3 mt-3">
             <label for="rating" class="form-label">Rating</label>
-        <fieldset class="starability-slot">
-            
-      
+            <fieldset class="starability-slot">
             <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
             <input type="radio" id="first-rate1" name="review[rating]" value="1" />
             <label for="first-rate1" title="Terrible">1 star</label>
@@ -90,10 +349,10 @@
 
     <% if(listing.reviews.length > 0) { %>
     <div class="row">
-    <p><b>All Reviews</b></p>
+    <h5><b>All Reviews</b></h5>
     <% for(review of listing.reviews){ %>
-       <div class="card col-5 mb-3 ms-3">
-        <div class="card-body">
+       <div class="card col-5 mb-3 ms-3 revv">
+        <div class="card-body rev">
             <h5 class="card-title">@<%= review.author.username %></h5>
             <p class="starability-result card-text" data-rating="<%= review.rating %>"> </p>
             <p class="card-text"><%= review.comment %></p>
@@ -117,5 +376,7 @@
 </div>
 
 <script src="/js/map.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     

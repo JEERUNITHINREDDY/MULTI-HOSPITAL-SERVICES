@@ -17,3 +17,23 @@
         );
     });
 })();
+
+
+const searchInp = document.querySelector(".search-inp");
+const searchBtn = document.querySelector(".search-btn");
+
+searchBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  const searchedText = searchInp.value;
+  window.location.href = `/listings/search/${searchedText}`;
+});
+
+//for filter location
+
+// const filter = document.querySelector(".filters");
+
+// filter.addEventListener("click", function(e){
+//     e.preventDefault();
+//     const filtertext = this.value;
+//     window.location.href = `/listings/filter/${filtertext}`
+// });

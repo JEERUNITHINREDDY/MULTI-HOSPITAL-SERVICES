@@ -1,7 +1,6 @@
 <style>
   .btn-search{
-    background-color: #fe424d;
-    color: #fff;
+    color: #000000;
     border-radius: 25px;
     padding: 0 1rem 0 1rem;
   }
@@ -16,11 +15,37 @@
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
   }
+
+  .abcd {
+    color: #fe424d;
+  }
+  .flt{
+   border-color: white;
+   margin-bottom: 4px;
+  }
+  select option:first-child{
+    display: none;
+  }
+  .logo-icon
+  {
+    height: 45px;
+    width: 45px;
+    margin-right: 2PX;
+    margin-top: 0;
+  }
+  .head{
+    font-weight: 700;
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 6px;
+    color: rgb(30, 101, 103) !important;
+  }
 </style>
+
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+      <a class="navbar-brand logo-icon" href="/listings"><img class="logo-icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGm2ra9r3Uig9r50KPmU5HLMZCQ3YPWLNC2A&s" alt=""></a>
       <button class="navbar-toggler" 
       type="button" 
       data-bs-toggle="collapse" 
@@ -30,23 +55,28 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" href="/listings">Explore</a>
+          <a class="nav-link head" href="/listings"> MULTI HOSPITALS</a>
         </div>
 
         <div class="navbar-nav ms-auto">
           <form class="d-flex" role="search">
-            <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" aria-label="Search">
-            <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+            <input class="form-control me-2 search-inp" type="search" placeholder="Search Hospitals" aria-label="Search">
+            <button class="btn btn-search search-btn"  type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
           </form>
         </div>
 
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new ">Add your place </a>
+            <select class="flt"   name="filter" id="filter">
+            <option value="" selected >Location</option>
+            <option class="filters" value="vadodara">Vadodara</option>
+            <option class="filters" value="ahmedabad">Ahmedabad</option>
+            <option class="filters" value="surat">Surat</option>
+          </select>
           <% if(!currUser) { %>
-          <a class="nav-link" href="/signup"><b>Sign up </b> </a>
           <a class="nav-link" href="/login"><b>Log in</b></a>
           <% } %>
           <% if(currUser) { %>
+            <a class="nav-link" href="listings/appointments"><b>Appointments🏥</b> </a>
           <a class="nav-link" href="/logout"><b>Log out</b> </a>
           <% } %>
         </div>
@@ -54,3 +84,23 @@
       </div>
     </div>
   </nav>
+
+  <script>
+    document.getElementById('filter').addEventListener('change', function(){
+      this.options[0].style.display = 'none';
+    });
+
+      const locationUrls = {
+          vadodara: 'http://localhost:8085/listings/filter/vadodara',
+          ahmedabad: 'http://localhost:8085/listings/filter/ahmedabad',
+          surat: 'http://localhost:8085/listings/filter/surat'
+      };
+
+      document.getElementById('filter').addEventListener('change', function() {
+          const selectedLocation = this.value;
+          if (selectedLocation) {
+              window.location.href = locationUrls[selectedLocation];
+          }
+          this.options[0].style.display = 'none';
+      });
+  </script>

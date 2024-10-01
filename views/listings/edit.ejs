@@ -25,6 +25,18 @@
             <div class="invalid-feedback">Please enter short description</div>
         </div>
 
+        <div class="mb-3">
+            <label for="organs" class="form-label">Organ Avaliability</label>
+            <textarea cols="30" rows="5" 
+            name = "listing[organs]" 
+            placeholder="organ Avaliability" 
+            class="form-control"
+            ><%= listing.organs %></textarea>
+
+            <div class="invalid-feedback">Please enter details of available organs</div>
+
+        </div>   
+
         <div class="mb-3"  >
            Original Listing Image <br>
            <img src="<%= originalImageUrl %> " >
@@ -36,6 +48,12 @@
              type = "file" 
              class="form-control"  
              >
+        </div>
+
+        <div class="mb-3">
+            <label for="filter" class="form-label">Filter</label>
+            <input name = "listing[filter]" placeholder="enter city" type = "text" class="form-control" required>
+            <div class="invalid-feedback">city should be valid</div>
         </div>
 
         <div class="row">
@@ -54,6 +72,8 @@
             </div>
     
         </div>
+
+        
         
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>

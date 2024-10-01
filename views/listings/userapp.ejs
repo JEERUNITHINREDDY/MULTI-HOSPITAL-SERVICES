@@ -1,0 +1,175 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Hospital</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Poppins&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/rating.css">
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+
+</head>
+<style>
+    .btn-search {
+        color: #000000;
+        border-radius: 25px;
+        padding: 0 1rem 0 1rem;
+    }
+
+    .btn-search i {
+        display: inline;
+        margin-right: 0.5rem;
+    }
+
+    .search-inp {
+        border-radius: 25px;
+        padding: 0.5rem 3rem 0.5rem 3rem;
+        font-size: 1rem;
+    }
+
+    .abcd {
+        color: #fe424d;
+    }
+
+    .flt {
+        border-color: white;
+        margin-bottom: 4px;
+    }
+
+    select option:first-child {
+        display: none;
+    }
+
+    .logo-icon {
+        height: 45px;
+        width: 45px;
+        margin-right: 2PX;
+        margin-top: 0;
+    }
+
+    .head {
+        font-weight: 700;
+        font-size: 25px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-top: 6px;
+        color: rgb(30, 101, 103) !important;
+    }
+
+    .appbody {
+        padding: 20px;
+    }
+
+    .status-accepted {
+        color: green;
+    }
+
+    .status-rejected {
+        color: red;
+    }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand logo-icon" href="/listings"><img class="logo-icon"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGm2ra9r3Uig9r50KPmU5HLMZCQ3YPWLNC2A&s"
+                alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link head" href="/listings"> MULTI HOSPITALS</a>
+            </div>
+
+            <div class="navbar-nav ms-auto">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2 search-inp" type="search" placeholder="Search Hospitals"
+                        aria-label="Search">
+                    <button class="btn btn-search search-btn" type="submit"><i
+                            class="fa-solid fa-magnifying-glass"></i>Search</button>
+                </form>
+            </div>
+
+            <div class="navbar-nav ms-auto">
+                <select class="flt" name="filter" id="filter">
+                    <option value="" selected>Location</option>
+                    <option class="filters" value="vadodara">Vadodara</option>
+                    <option class="filters" value="ahmedabad">Ahmedabad</option>
+                    <option class="filters" value="surat">Surat</option>
+                </select>
+                <!-- <a class="nav-link" href="/listings/new ">Add new hospital </a> -->
+
+                <a class="nav-link" href="/logout"><b>Log out</b> </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container my-4">
+    <h1 class="text-center mb-4">My Appointments</h1>
+    <div class="row">
+        <% for(let appointment of allappointments) { %>
+            <% if(currUser._id.equals(appointment.bookedPatient)){%>
+                <div class="col-md-6">
+                    <div class="card mb-4 p-3 shadow-lg p-3 mb-5 bg-body rounded"">
+                    <div class=" card-body">
+                        <h5 class="card-title"><strong>Name:</strong>
+                            <%= appointment.pname %>
+                        </h5>
+                        <p class="card-text"><strong>Email:</strong>
+                            <%= appointment.email %>
+                        </p>
+                        <p class="card-text"><strong>Phone:</strong>
+                            <%= appointment.phone %>
+                        </p>
+                        <p class="card-text"><strong>Emergency Phone:</strong>
+                            <%= appointment.ephone %>
+                        </p>
+                        <p class="card-text"><strong>Address:</strong>
+                            <%= appointment.address %>
+                        </p>
+                        <p class="card-text"><strong>Hospital Name:</strong>
+                            <%= appointment.hospitalname %>
+                        </p>
+                        <p class="card-text"><strong>Appointment Date:</strong>
+                            <% let dateObj=new Date(appointment.apointmentdate); let options={ year: 'numeric' ,
+                                month: 'short' , day: 'numeric' }; let formattedDate=dateObj.toLocaleDateString('en-US',
+                                options); %>
+                                <%= formattedDate %>
+                        </p>
+                        <p class="card-text"><strong>Department:</strong>
+                            <%= appointment.department %>
+                        </p>
+                        <p class="card-text"><strong>Additional Info:</strong>
+                            <%= appointment.anything %>
+                        </p>
+                        <p class="card-text">
+                            <strong>Status:</strong> <b class="<%= appointment.status === 'Appointment Accepted' ? 'status-accepted' :
+                            appointment.status === 'Appointment Rejected' ? 'status-rejected' : '' %>">
+                                <%= appointment.status %> on <%= formattedDate %>
+                            </b> 
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <% } %>
+        <% } %>
+</div>
+</div>

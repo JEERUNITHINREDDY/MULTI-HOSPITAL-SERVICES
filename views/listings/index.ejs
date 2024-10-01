@@ -1,6 +1,7 @@
 <% layout("/layouts/boilerplate") %>
 
 <style>
+
   #filters {
     display: flex;
     flex-wrap: wrap;
@@ -51,112 +52,331 @@
 
 }
 
-  /* @media screen and (max-width: 600px) {
-            .hide {
-                display: none;
-            }
-        } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.slide-container {
+    width: 100%;
+    margin-top: 10px;
+}
+.slides {
+    display: none;
+}
+.active {
+    display: block;
+}
+.slide-img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+.content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.mottos, .services, .appointment-section, .urgent-call {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Animation for each section */
+.mottos.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.services.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.appointment-section.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.urgent-call.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Initial state of animations */
+.mottos {
+    transform: translateY(100px);
+}
+
+.services {
+    transform: translateX(-100px);
+}
+
+.appointment-section {
+    transform: translateX(100px);
+}
+
+.urgent-call {
+    transform: translateY(100px);
+}
+
+.mottos {
+    display: flex;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.services {
+    display: flex;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.mottos-content, .services-content {
+    flex: 1;
+}
+.motophoto {
+    width: 40rem;
+    height: auto;
+    margin-left: 2rem;
+    border-radius: 10px;
+}
+.serimage{
+    margin-left: 0;
+    margin-right: 2rem;
+    width: 40rem;
+    height: 80%;
+    margin-left: 2rem;
+    margin-top: 6rem;
+    border-radius: 10px;
+}
+
+.mottos h2, .services h2 {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+.mottos ul, .services ul {
+    list-style-type: none;
+    padding: 0;
+}
+.mottos li, .services li {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.mottos li:hover, .services li:hover {
+    background-color: #e0e0e0;
+}
+.appointment-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+.appointment-form {
+    background-color: white;
+    padding: 2rem;
+    flex: 1;
+    margin-right: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.appointment-form h2 {
+    margin-bottom: 1rem;
+}
+.appointment-form label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+.appointment-form input, .appointment-form select, .appointment-form button {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+.appointment-info {
+    background-color: white;
+    padding: 2rem;
+    flex: 1;
+    margin-left: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.appointment-info h2 {
+    color: #4CAF50;
+}
+.urgent-call {
+    background-color: #ff6f61;
+    color: white;
+    padding: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.hostex{
+  color: #4CAF50;
+  font-weight: 700;
+}
 
 </style>
 
-<form action="/listings/filter">
-    <div id="filters" class=".filters">
-      
-        <div class="filter" >
-        <button class="fa-solid fa-fire "  ></button> 
-        <p>Trending</p>
-      </div>
-      
-      <div class="filter" >
-        <button class="fa-solid fa-bed "></button>
-        <p>Rooms</p>
-      </div>
-      
-
-      <div class="filter">
-        <button class="fa-solid fa-mountain-city"></button>
-        <p>Iconic Cities</p>
-      </div>
-
-      <div class="filter">
-        <button class="fa-solid fa-mountain"></button>
-        <p>Mountains</p>
-      </div>
-
-      <div class="filter hide">
-        <button class="fa-brands fa-fort-awesome"></button>
-        <p>Castles</p>
-      </div>
-      
-      <div class="filter hide ">
-        <button class="fa-solid fa-person-swimming"></button>
-        <p>Amaging pools</p>
-      </div>
-
-      <div class="filter hide">
-        <button class="fa-solid fa-campground"></button>
-        <p>Camping</p>
-      </div>
-
-      <div class="filter hide">
-        <button class="fa-solid fa-cow"></button>
-        <p>Farms</p>
-      </div>
-      
-      <div class="filter hide">
-        <button class="fa-regular fa-snowflake"></button>
-        <p>Arctic</p>
-      </div> 
-      
-      <div class="tax-toggle">
-        <div class="form-check-reverse form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
-        </div>
-      </div>
-      
-    </div>
-    </form>
-
-      
+<body>
     
 
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <% for(let listing of allListings) { %>
-            <a href="/listings/<%=listing.id%>" class="listing-link">
-              <div class="card col listing-card" >
-                <img src="<%= listing.image.url %>" 
-                class="card-img-top" 
-                alt="listing_image" 
-                style="height: 20rem"
-                >
-                
-                <div class="card-img-overlay"><%= listing.title %></div>
+  <div class="slide-container">
+      <img class="slides slide-img" src="https://blogimages.softwaresuggest.com/blog/wp-content/uploads/2022/11/28162754/Best-FreeOpen-Source-Hospital-Management-System-01.png" alt="Hospital Image 1">
+      <img class="slides slide-img" src="https://acsonnet.com/wp-content/uploads/2021/05/hospital-management-system-1.jpg" alt="Hospital Image 2">
+      <img class="slides slide-img" src="https://miro.medium.com/v2/resize:fit:1400/1*2qqiz9jJoJ_GSPbUPcHkEw.jpeg" alt="Hospital Image 3">
+      <img class="slides slide-img" src="https://healthray.com/wp-content/uploads/2024/02/What-Services-Do-Hospitals-Provide-A-Comprehensive-Overviews.webp" alt="Hospital Image 4">
+      <img class="slides slide-img" src="https://hatiintl.com/wp-content/uploads/2017/01/The-integrations-that-matter-for-a-Hospital-Management-System-1024x483.jpg" alt="Hospital Image 5">
+      <img class="slides slide-img" src="https://www.wesleypharmacy.com.au/wp-content/uploads/2019/04/page-service-1024x732.jpg" alt="Hospital Image 6">
+      <img class="slides slide-img" src="https://www.trusthospitals.in/wp-content/uploads/2015/07/shutterstock_124045702.png" alt="Hospital Image 7">
 
 
-                <div class="card-body">
-                  <p class="card-text">
-                    <b><%= listing.title %></b> <br>
-                    &#8377;<%= listing.price.toLocaleString("en-IN")%> /day <%# .toLocaleString("en-IN") its not working in this page %>
-                    <i class="tax-info">&nbsp;  +18% GST</i>
-                  </p>
-                </div>
-              </div>
-            </a>
-              <% } %>
-    </div>
-    
-    <script>
-let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-taxSwitch.addEventListener("click", () => {
-  let taxInfo = document.getElementsByClassName("tax-info");
-  for (info of taxInfo){
-    if (info.style.display != "inline"){
-      info.style.display = "inline";
-    }else {
-      info.style.display = "none";
-    }
+
+
+
+  </div>
+
+  <div class="content">
+      <h2>Providing Comprehensive Healthcare Solutions Across Multiple Hospitals</h2>
+      <p>A multi-hospital services website brings forth a myriad of advantages that contribute to the enhancement of healthcare delivery, patient experiences, and operational efficiency. By centralizing information, providing comprehensive service details, and facilitating seamless appointment scheduling, these platforms streamline the healthcare journey for patients. Integration of telemedicine, health education resources, and patient feedback mechanisms further enrich the user experience and promote informed decision-making.</p>
+  </div>
+
+  <div class="mottos">
+      <div class="mottos-content">
+      <h2>Our Mottos</h2>
+      <ul>
+          <li>Transforming Healthcare, One Hospital at a Time</li>
+          <li>Empowering Hospitals, Enriching Lives</li>
+          <li>Streamlining Care, Saving Lives</li>
+          <li>Connecting Care, Everywhere</li>
+          <li>Unity in Healthcare, Excellence in Care</li>
+      </ul>
+  </div>
+  <img src="https://img.freepik.com/premium-vector/health-care-program-metaphor-online-medicine-medical-insurance-hospital-services-preventive-check-up_566886-2769.jpg"  class="motophoto" alt="Hospital Image 2">
+  </div>
+
+  <div class="services">
+      <img src="https://media.licdn.com/dms/image/C5612AQGJi9QozuNXHQ/article-cover_image-shrink_720_1280/0/1595043879529?e=2147483647&v=beta&t=pTPR5LKSljMEzYk8QHzT5Oqq9u0xekAVWKLL6mip_Jg" class="serimage" alt="Hospital Image 3">
+      <div class="services-content">
+      <h2>Our Services</h2>
+      <ul>
+          <li>Organ Availability Tracker: A real-time platform that displays available organs for transplantation.</li>
+          <li>Nearest Hospital Locator: A GPS-enabled service that directs patients to the nearest hospital with available services.</li>
+          <li>Multi-Hospital Management System: A comprehensive platform that integrates and manages multiple hospitals.</li>
+          <li>Electronic Health Records (EHR): A secure and accessible system that stores patient data.</li>
+          <li>Patient Engagement Platform: A user-friendly interface that empowers patients to manage their health, access medical records.</li>
+          <li>Data Analytics and Insights: A powerful tool that provides actionable insights, enabling data-driven decisions, and improving hospital operations.</li>
+      </ul>
+  </div>
+  </div>
+
+  
+
+
+
+  <h1 class="hostex">HOSPITALS </h1>
+  
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+    <% for(let listing of allListings) { %>
+        <a href="/listings/<%=listing.id%>" class="listing-link">
+          <div class="card col listing-card " >
+            <img src="<%= listing.image.url %>" 
+            class="card-img-top" 
+            alt="listing_image" 
+            style="height: 20rem"
+            >
+            
+            <div class="card-img-overlay"><%= listing.title %></div>
+
+
+            <div class="card-body">
+              <p class="card-text">
+                <b><%= listing.title %></b> <br>
+                &#8377;<%= listing.price.toLocaleString("en-IN")%> /appointment <%# .toLocaleString("en-IN") its not working in this page %>
+                <i class="tax-info">&nbsp;  +18% GST</i>
+              </p>
+            </div>
+          </div>
+        </a>
+          <% } %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <div class="urgent-call mb-4">
+      <h2>For Urgent Assistance, Call Us at: +919398231189</h2>
+  </div>
+
+  <!-- <script src="home.js"></script> -->
+      
+</body>
+
+<script>
+
+
+  
+  
+  let currentSlide = 0;
+  function showSlides() {
+      const slides = document.querySelectorAll(".slides");
+      slides.forEach((slide, index) => {
+          slide.style.display = (index === currentSlide) ? "block" : "none";
+      });
+      currentSlide = (currentSlide + 1) % slides.length;
   }
-});
+  document.addEventListener("DOMContentLoaded", () => {
+      showSlides();
+      setInterval(showSlides, 3000);
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('in-view');
+              } else {
+                  entry.target.classList.remove('in-view');
+              }
+          });
+      }, { threshold: 0.1 });
+
+      const elements = document.querySelectorAll('.mottos, .services, .appointment-section, .urgent-call');
+      elements.forEach(el => observer.observe(el));
+  });
+
+
 </script>
+
+
 
