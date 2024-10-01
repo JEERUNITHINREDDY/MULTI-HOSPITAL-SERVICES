@@ -114,18 +114,18 @@ Passport.js (for authentication)
     ```
 3. **Set up environment variables:**
    Create a .env file in the root directory and add your MongoDB URI, Cloudinary credentials, and API keys:
-  env
-  MONGO_URI=your_mongo_uri
-  CLOUDINARY_CLOUD_NAME=your_cloud_name
-  CLOUDINARY_API_KEY=your_api_key
-  CLOUDINARY_API_SECRET=your_api_secret
+     env
+     MONGO_URI=your_mongo_uri <br/>
+     CLOUDINARY_CLOUD_NAME=your_cloud_name<br/>
+     CLOUDINARY_API_KEY=your_api_key<br/>
+     CLOUDINARY_API_SECRET=your_api_secret<br/>
 
-4. **Run the server:**
+5. **Run the server:**
 
     ```bash
     nodemon app.js
     ```
-5. ***Access the application:***
+6. ***Access the application:***
     - Open your browser and navigate to http://localhost:8085/listings
 
 
@@ -206,5 +206,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - **Author:** [Jeeru Nithin Reddy](https://github.com/JEERUNITHINREDDY)
 - **Email:** jeerunithinreddy3012@gmail.com
-- **LinkedIn:** Jeeru Nithin Reddy([https://www.linkedin.com/in/yourprofile](https://www.linkedin.com/in/jeeru-nithin-reddy-80586622b/)
+- **LinkedIn:** Jeeru Nithin Reddy(https://www.linkedin.com/in/jeeru-nithin-reddy-80586622b/)
 
