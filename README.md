@@ -10,10 +10,11 @@
 4. [Installation](#installation)
 5. [Usage](#usage)
 6. [Screenshots](#screenshots)
-7. [Testing](#testing)
-8. [Contributing](#contributing)
-9. [License](#license)
-10. [Contact](#contact)
+7. [Demo video](#demo-video)
+8. [Testing](#testing)
+9. [Contributing](#contributing)
+10. [License](#license)
+11. [Contact](#contact)
 
 ## Features
 **Multi-Hospital Support:** Manage multiple hospitals efficiently.
@@ -175,8 +176,7 @@ Passport.js (for authentication)
 ![new admin](https://github.com/user-attachments/assets/32a950c3-cc59-48e1-8c5e-2377a7b1fe72)
 
 ## Demo video
-
-
+https://github.com/user-attachments/assets/1f5759cb-8aec-47d8-9dbd-69e939103220
 
 ## Testing
 1. **Unit Testing:** Tests individual components like patient records and appointment scheduling.
